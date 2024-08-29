@@ -1,0 +1,39 @@
+.search {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 8px 12px;
+  max-width: 400px;
+  margin: 30px auto; // Центрирует блок по горизонтали
+
+  input {
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 8px 12px;
+    flex: 1;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+    color: #333;
+
+    &::placeholder {
+      color: #aaa;
+    }
+
+    &:focus {
+      border-color: #6200ea;
+    }
+  }
+
+  .icon {
+    margin-left: 8px;
+    color: #6200ea;
+    font-size: 1.25rem;
+  }
+
+  p {
+    margin: 0;
+  }
+}

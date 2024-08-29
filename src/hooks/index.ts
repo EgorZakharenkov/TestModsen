@@ -1,40 +1,27 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { ResponseType } from "../types";
 
-type FetchState = {
-  data: [] | null;
-  loading: boolean;
-  error: string | null;
-};
-
-export function useFetch(url: string, options?: RequestInit) {
-  const [state, setState] = useState<FetchState>({
-    data: null,
-    loading: true,
-    error: null,
-  });
-  const fetchData = async () => {
-    try {
-      setState((prev) => ({ ...prev, loading: true, error: null }));
-
-      const response = await fetch(url, options);
-      if (!response.ok) {
-        throw new Error(`Error: ${response.statusText}`);
-      }
-
-      const data = await response.json();
-      setState({ data, loading: false, error: null });
-    } catch (error: unknown) {
-      setState({
-        data: null,
-        loading: false,
-        error: (error instanceof Error && error.message) || "Unknown error",
-      });
-    }
-  };
+export function useFetchData(url: string) {
+  const [data, setData] = useState<ResponseType | null>(null);
+  const [error, setError] = useState<Error | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    fetchData();
+    setLoading(true);
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      })
+      .finally(() => setLoading(false));
   }, [url]);
 
-  return { ...state };
+  const memoizedData = useMemo(() => data, [data]);
+
+  return { data: memoizedData, error, loading };
 }

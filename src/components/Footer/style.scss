@@ -1,0 +1,14 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background: #ffffff;
+  padding: 10px 20px;
+
+  &__logo {
+    font-size: 1.5rem;
+  }
+}

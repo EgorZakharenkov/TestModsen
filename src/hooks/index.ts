@@ -1,24 +1,27 @@
 import { useEffect, useMemo, useState } from "react";
-import { ResponseType } from "../types";
 
-export function useFetchData(url: string) {
-  const [data, setData] = useState<ResponseType | null>(null);
+export function useFetchData<T>(url: string) {
+  const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<Error | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     setLoading(true);
     fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data);
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((result) => {
+        setData(result); // Приведение типа, если необходимо
         setLoading(false);
       })
       .catch((error) => {
         setError(error);
         setLoading(false);
-      })
-      .finally(() => setLoading(false));
+      });
   }, [url]);
 
   const memoizedData = useMemo(() => data, [data]);

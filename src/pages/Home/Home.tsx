@@ -3,26 +3,29 @@ import { useFetchData } from "../../hooks";
 import "./style.scss";
 import { Search } from "../../components/Search/Search.tsx";
 import { useSearch } from "../../context/SearchContext.tsx";
-import { Product } from "../../components/Product/Product.tsx";
+import { ProductCard } from "../../components/ProductCard/ProductCard.tsx";
 import { Pagination } from "../../components/Pagination/Pagination.tsx";
+import { Filter } from "../../components/Filter/Filter.tsx";
+import { ResponseType } from "../../types";
 
 interface Props {
   className?: string;
 }
 
-const ITEMS_PER_PAGE = 4;
+const ITEMS_PER_PAGE = 5;
 
 export const Home: React.FC<Props> = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [filter, setFilter] = useState<string>("");
   const { searchTerm } = useSearch();
 
-  const { data, loading, error } = useFetchData(
-    `https://api.artic.edu/api/v1/artworks/search?q=${searchTerm}&page=${page}&limit=${ITEMS_PER_PAGE}&fields=title,artist_title,image_id,id`,
+  const { data, loading, error } = useFetchData<ResponseType>(
+    `https://api.artic.edu/api/v1/artworks/search?q=${searchTerm}&page=${page}&size=${ITEMS_PER_PAGE}&fields=title,artist_title,image_id,id`,
   );
   useEffect(() => {
     if (data) {
-      const totalItems = data.pagination.total;
+      const totalItems = data.pagination ? data.pagination.total : 0;
       setTotalPages(Math.ceil(totalItems / ITEMS_PER_PAGE));
     }
   }, [data]);
@@ -32,13 +35,14 @@ export const Home: React.FC<Props> = () => {
   return (
     <div className="home">
       <Search />
+      <Filter filter={filter} setFilter={setFilter} />
       {loading ? (
         <div className="spinner">Загрузка...</div>
       ) : (
         <div className="card-container">
           {data?.data &&
             data.data.map((item) => (
-              <Product
+              <ProductCard
                 id={item.id}
                 title={item.title}
                 artist_title={item.artist_title}

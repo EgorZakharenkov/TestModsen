@@ -1,0 +1,70 @@
+.favorites {
+  padding: 20px;
+  text-align: center;
+
+  h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+  }
+
+  .favorites-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .favorites-item {
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+    position: relative;
+
+    &:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .favorites-item-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .favorites-item-info {
+      padding: 10px;
+
+      .favorites-item-title {
+        font-size: 1.2rem;
+        margin: 0;
+        font-weight: bold;
+      }
+
+      .favorites-item-artist {
+        font-size: 1rem;
+        color: #666;
+        margin-bottom: 10px;
+      }
+
+      .remove-favorite-button {
+        background-color: #ff4d4d;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.9rem;
+
+        &:hover {
+          background-color: #ff1a1a;
+        }
+      }
+    }
+  }
+
+  .favorites-empty {
+    font-size: 1.5rem;
+    color: #888;
+  }
+}

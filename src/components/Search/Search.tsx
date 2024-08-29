@@ -6,16 +6,15 @@ export const Search: React.FC = () => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const { setSearchTerm } = useSearch();
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setValue(value);
+    setValue(event.target.value);
 
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
 
     timeoutRef.current = setTimeout(() => {
-      setSearchTerm(value);
-    }, 300);
+      setSearchTerm(event.target.value);
+    }, 400);
   };
   return (
     <div className="search">

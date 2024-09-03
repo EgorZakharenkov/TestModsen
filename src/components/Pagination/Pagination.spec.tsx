@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Pagination } from "./Pagination";
 import "@testing-library/jest-dom";
+import "@testing-library/jest-dom/extend-expect";
 
 describe("Pagination", () => {
   it("does not render when totalPages is 1", () => {

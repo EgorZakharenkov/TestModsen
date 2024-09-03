@@ -1,5 +1,6 @@
 import React from "react";
-
+import { Button } from "../Button/Button.tsx";
+import "./style.scss";
 interface Props {
   page: number;
   totalPages: number;
@@ -7,25 +8,22 @@ interface Props {
 }
 
 export const Pagination: React.FC<Props> = ({ page, setPage, totalPages }) => {
+  if (totalPages <= 1) return null;
   return (
     <div className="pagination">
-      <button
-        className="pagination-button"
+      <Button
+        children={"Назад"}
         disabled={page === 1}
         onClick={() => setPage(page - 1)}
-      >
-        Назад
-      </button>
+      />
       <span>
         Страница {page} из {totalPages}
       </span>
-      <button
-        className="pagination-button"
-        disabled={page === totalPages}
+      <Button
         onClick={() => setPage(page + 1)}
-      >
-        Вперед
-      </button>
+        disabled={page === totalPages}
+        children={"Вперед"}
+      />
     </div>
   );
 };

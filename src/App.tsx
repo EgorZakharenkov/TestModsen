@@ -1,10 +1,10 @@
 import "./App.css";
-import { Header } from "./components/Header/Header.tsx";
-import { Footer } from "./components/Footer/Footer.tsx";
+import { Header } from "./components/Header/Header";
+import { Footer } from "./components/Footer/Footer";
 import { Route, Routes } from "react-router-dom";
-import { Home } from "./pages/Home/Home.tsx";
-import { Product } from "./pages/Product/Product.tsx";
-import { Favorites } from "./pages/Favorites/Favorites.tsx";
+import { Home } from "./pages/Home/Home";
+import { Product } from "./pages/Product/Product";
+import { Favorites } from "./pages/Favorites/Favorites";
 function App() {
   return (
     <>

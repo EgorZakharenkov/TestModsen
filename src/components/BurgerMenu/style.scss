@@ -1,0 +1,52 @@
+.burger-menu {
+  position: relative;
+}
+
+.burger-button {
+  display: flex;
+  flex-direction: column;
+  width: 30px;
+  border: none;
+  cursor: pointer;
+  background: #20232a;
+  gap: 5px;
+}
+
+.bar {
+  width: 30px;
+  height: 3px;
+  background: #f1f1f1;
+  transition: 0.3s;
+  z-index: 10;
+}
+
+.menu {
+  position: absolute;
+  top: 150%;
+  right: 0;
+  width: 200px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 9;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+}
+
+.menu a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  padding: 10px;
+
+}
+
+.menu a:hover {
+  background: #f0f0f0;
+}

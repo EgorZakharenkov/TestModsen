@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 export function useFetchData<T>(url: string) {
   const [data, setData] = useState<T | null>(null);
@@ -42,4 +42,19 @@ export const useMobileView = () => {
   }, []);
 
   return isMobile;
+};
+
+export const useMenuToggle = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openMenu = useCallback(() => setIsOpen(true), []);
+  const closeMenu = useCallback(() => setIsOpen(false), []);
+  const toggleMenu = useCallback(() => setIsOpen((prev) => !prev), []);
+
+  return {
+    isOpen,
+    openMenu,
+    closeMenu,
+    toggleMenu,
+  };
 };

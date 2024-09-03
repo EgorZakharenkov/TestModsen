@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { ProductCard } from "./ProductCard";
 import "@testing-library/jest-dom";
 import { MemoryRouter } from "react-router-dom";
+import "@testing-library/jest-dom/extend-expect";
 
 describe("ProductCard", () => {
   it("renders correctly with given props", () => {

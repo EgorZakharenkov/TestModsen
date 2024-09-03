@@ -1,6 +1,7 @@
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { ProductSkeleton } from "./ProductSkeleton";
+import "@testing-library/jest-dom/extend-expect";
 
 describe("ProductSkeleton", () => {
   it("renders the skeleton with default props", () => {

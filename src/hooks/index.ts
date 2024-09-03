@@ -28,3 +28,18 @@ export function useFetchData<T>(url: string) {
 
   return { data: memoizedData, error, loading };
 }
+
+export const useMobileView = () => {
+  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 550);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 550);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return isMobile;
+};

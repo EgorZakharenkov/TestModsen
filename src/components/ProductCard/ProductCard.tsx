@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "../Button/Button.tsx";
+import "./style.scss";
 
 interface Props {
   id: number;
@@ -23,17 +25,19 @@ export const ProductCard: React.FC<Props> = ({
     }
   }, []);
 
-  const handleFavoriteClick = (product: Props) => {
+  const handleFavoriteClick = () => {
     const savedFavorites = sessionStorage.getItem("favorites");
     const currentFavorites: Props[] = savedFavorites
       ? JSON.parse(savedFavorites)
       : [];
 
-    const isFavorite = currentFavorites.some((item) => item.id === product.id);
+    const isFavorite = currentFavorites.some(
+      (item) => item.id === productData.id,
+    );
 
     const updatedFavorites = isFavorite
-      ? currentFavorites.filter((item) => item.id !== product.id)
-      : [...currentFavorites, product];
+      ? currentFavorites.filter((item) => item.id !== productData.id)
+      : [...currentFavorites, productData];
 
     setFavorites(updatedFavorites);
     sessionStorage.setItem("favorites", JSON.stringify(updatedFavorites));
@@ -53,14 +57,14 @@ export const ProductCard: React.FC<Props> = ({
       <div className="card-content">
         <h2 className="card-title">{title}</h2>
         <p className="card-author">{artist_title}</p>
-        <button
-          className={`favorite-button ${favorites.some((item) => item.id === id) ? "active" : ""}`}
-          onClick={() => handleFavoriteClick(productData)}
+        <Button
+          className={favorites.some((item) => item.id === id) ? "active" : ""}
+          onClick={() => handleFavoriteClick()}
         >
           {favorites.some((item) => item.id === id)
             ? "Удалить из избранного"
             : "Добавить в избранное"}
-        </button>
+        </Button>
       </div>
     </div>
   );

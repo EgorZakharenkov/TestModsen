@@ -7,6 +7,7 @@ import { ProductCard } from "../../components/ProductCard/ProductCard.tsx";
 import { Pagination } from "../../components/Pagination/Pagination.tsx";
 import { Filter } from "../../components/Filter/Filter.tsx";
 import { ResponseType } from "../../types";
+import { ProductSkeleton } from "../../components/ProductSkeleton/ProductSkeleton.tsx";
 
 interface Props {
   className?: string;
@@ -31,13 +32,21 @@ export const Home: React.FC<Props> = () => {
   }, [data]);
 
   if (error) return <div className="error">Ошибка загрузки данных</div>;
-
   return (
     <div className="home">
-      <Search />
-      <Filter filter={filter} setFilter={setFilter} />
+      <div className={"container-search"}>
+        <Search />
+        <Filter filter={filter} setFilter={setFilter} />
+      </div>
+      {data?.data && data.data.length === 0 && "Упс... Такого нет"}
       {loading ? (
-        <div className="spinner">Загрузка...</div>
+        <div className={"skeleton-items"}>
+          {Array(5)
+            .fill(0)
+            .map((_, index: number) => (
+              <ProductSkeleton key={index} />
+            ))}
+        </div>
       ) : (
         <div className="card-container">
           {data?.data &&

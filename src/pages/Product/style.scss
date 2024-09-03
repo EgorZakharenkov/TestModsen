@@ -2,71 +2,95 @@
   max-width: 900px;
   margin: 20px auto;
   padding: 20px;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  color: #333;
+  background-color: #f9f9f9;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  color: #444;
+  transition: box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  }
 
   .product-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     margin-bottom: 20px;
 
-    .product-title {
-      font-size: 28px;
-      font-weight: bold;
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .favorite-button {
-      padding: 10px 20px;
-      background-color: #6c63ff;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s;
+    .product-title {
+      font-size: 32px;
+      font-weight: 700;
+      color: #2d2d2d;
+      margin-bottom: 10px;
 
-      &.active {
-        background-color: #ff6b6b;
-      }
-
-      &:hover {
-        background-color: #5a54d6;
+      @media (min-width: 768px) {
+        margin-bottom: 0;
       }
     }
   }
 
   .product-content {
     display: flex;
+    flex-direction: column;
     align-items: center;
 
+    @media (min-width: 768px) {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
     .product-image {
-      max-width: 400px;
+      max-width: 100%;
       height: auto;
-      margin-right: 20px;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      margin-bottom: 20px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
       transition: transform 0.3s ease;
 
       &:hover {
         transform: scale(1.05);
+      }
+
+      @media (min-width: 768px) {
+        max-width: 400px;
+        margin-right: 20px;
+        margin-bottom: 0;
       }
     }
 
     .product-details {
       flex: 1;
       font-size: 18px;
-      color: #555;
+      color: #666;
+      line-height: 1.6;
+      text-align: center;
+
+      @media (min-width: 768px) {
+        text-align: left;
+      }
 
       p {
-        margin-bottom: 10px;
+        margin-bottom: 12px;
 
         strong {
-          font-weight: bold;
+          font-weight: 700;
           color: #333;
         }
       }
     }
   }
+}
+
+.loading {
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }

@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useFetchData } from "../../hooks";
 import { DataType, ResponseFullProductType } from "../../types";
+import { ProductSkeleton } from "@components/ProductSkeleton/ProductSkeleton.tsx";
+import { Button } from "@components/Button/Button.tsx";
+
 import "./style.scss";
 
 export const Product: React.FC = () => {
@@ -36,7 +39,12 @@ export const Product: React.FC = () => {
     }
   };
 
-  if (loading) return <div className="loading">Загрузка...</div>;
+  if (loading)
+    return (
+      <div className="loading">
+        <ProductSkeleton isFull />
+      </div>
+    );
   if (error) return <div className="error">Ошибка загрузки данных</div>;
   if (!data) return <div className="no-data">Нет данных для отображения</div>;
 
@@ -46,12 +54,13 @@ export const Product: React.FC = () => {
         <div className="productPage">
           <div className="product-header">
             <h1 className="product-title">{data.data.title}</h1>
-            <button
-              className={`favorite-button ${isFavorite ? "active" : ""}`}
+            <Button
+              variant={"full"}
+              className={isFavorite ? "active" : ""}
               onClick={handleFavoriteClick}
             >
               {isFavorite ? "Удалить из избранного" : "Добавить в избранное"}
-            </button>
+            </Button>
           </div>
           <div className="product-content">
             {data.data.image_id && (

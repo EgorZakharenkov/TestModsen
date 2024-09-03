@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { DataType } from "../../types";
 import "./style.scss";
+import { Button } from "../../components/Button/Button.tsx";
 
 export const Favorites: React.FC = () => {
   const [favorites, setFavorites] = useState<DataType[]>([]);
@@ -39,12 +40,9 @@ export const Favorites: React.FC = () => {
             <div className="favorites-item-info">
               <h2 className="favorites-item-title">{item.title}</h2>
               <p className="favorites-item-artist">{item.artist_title}</p>
-              <button
-                className="remove-favorite-button"
-                onClick={() => removeFavorite(item.id)}
-              >
+              <Button onClick={() => removeFavorite(item.id)}>
                 Удалить из избранного
-              </button>
+              </Button>
             </div>
           </div>
         ))}

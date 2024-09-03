@@ -1,18 +1,21 @@
-import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
-import { Footer } from './Footer';
-import '@testing-library/jest-dom';
+import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+import { Footer } from "./Footer";
+import "@testing-library/jest-dom";
 
-describe('Footer', () => {
-  it('renders the Modsen logo with a link to Modsen website', () => {
+describe("Footer", () => {
+  it("renders the Modsen logo with a link to Modsen website", () => {
     render(
       <MemoryRouter>
         <Footer />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
-    const modsenLink = screen.getByRole('link', { name: /modsen_logo/i });
+    const modsenLink = screen.getByRole("link", { name: /modsen_logo/i });
     expect(modsenLink).toBeInTheDocument();
-    expect(modsenLink).toHaveAttribute('href', 'https://www.modsen-software.com/');
+    expect(modsenLink).toHaveAttribute(
+      "href",
+      "https://www.modsen-software.com/",
+    );
   });
 });

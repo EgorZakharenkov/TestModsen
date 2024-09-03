@@ -1,13 +1,15 @@
 import React from "react";
+import "./style.scss";
 
 interface Props {
   filter: string;
   setFilter: (filter: string) => void;
 }
 const FILTER_OPTIONS = [
-  { value: "title", label: "Alphabetical" },
-  { value: "date", label: "Date" },
+  { value: "title", label: "По алфавиту" },
+  { value: "artist_title", label: "По дате" },
 ];
+
 export const Filter: React.FC<Props> = ({ filter, setFilter }) => {
   return (
     <div className="filter">

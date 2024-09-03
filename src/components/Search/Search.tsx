@@ -1,30 +1,58 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useSearch } from "../../context/SearchContext.tsx";
+import * as z from "zod";
+import { useFormik } from "formik";
 import "./style.scss";
+
 export const Search: React.FC = () => {
-  const [value, setValue] = useState<string>("");
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const { setSearchTerm } = useSearch();
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
 
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
+  const searchSchema = z.object({
+    value: z.string().max(12, "Максимальная длина строки - 12 символов"),
+  });
+
+  const validate = (values: { value: string }) => {
+    const validation = searchSchema.safeParse(values);
+    if (!validation.success) {
+      return validation.error.flatten().fieldErrors;
     }
-
-    timeoutRef.current = setTimeout(() => {
-      setSearchTerm(event.target.value);
-    }, 400);
+    return {};
   };
+
+  const formik = useFormik({
+    initialValues: {
+      value: "",
+    },
+    validate,
+    onSubmit: () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+
+      timeoutRef.current = setTimeout(() => {
+        setSearchTerm(formik.values.value);
+      }, 400);
+    },
+  });
+
   return (
     <div className="search">
-      <input
-        value={value}
-        onChange={handleChange}
-        type="text"
-        placeholder={"search..."}
-      />
-      <p></p>
+      <form onSubmit={formik.handleSubmit}>
+        <input
+          value={formik.values.value}
+          name="value"
+          onChange={(e) => {
+            formik.handleChange(e);
+            formik.handleSubmit();
+          }}
+          type="text"
+          placeholder="Поиск..."
+        />
+        {formik.touched.value && formik.errors.value && (
+          <p className="error-message">{formik.errors.value}</p>
+        )}
+      </form>
     </div>
   );
 };

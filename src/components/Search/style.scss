@@ -6,7 +6,8 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 8px 12px;
   max-width: 400px;
-  margin: 30px auto; // Центрирует блок по горизонтали
+  margin: 30px auto;
+
 
   input {
     border: none;
@@ -27,6 +28,9 @@
     }
   }
 
+  .error-message {
+    color: #a94442;
+  }
   .icon {
     margin-left: 8px;
     color: #6200ea;
@@ -37,3 +41,4 @@
     margin: 0;
   }
 }
+

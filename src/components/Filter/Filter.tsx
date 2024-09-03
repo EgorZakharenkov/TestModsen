@@ -6,8 +6,8 @@ interface Props {
   setFilter: (filter: string) => void;
 }
 const FILTER_OPTIONS = [
-  { value: "title", label: "По алфавиту" },
-  { value: "artist_title", label: "По дате" },
+  { value: "title", label: "По названию" },
+  { value: "artist_title", label: "По артисту" },
 ];
 
 export const Filter: React.FC<Props> = ({ filter, setFilter }) => {

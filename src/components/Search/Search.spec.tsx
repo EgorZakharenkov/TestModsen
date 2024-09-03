@@ -2,6 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Search } from "./Search";
 import { useSearch } from "../../context/SearchContext";
+import "@testing-library/jest-dom/extend-expect";
 
 jest.mock("../../context/SearchContext.tsx");
 

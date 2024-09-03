@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { Header } from "./Header";
 import "@testing-library/jest-dom";
+import "@testing-library/jest-dom/extend-expect";
 
 describe("Header", () => {
   it("renders the logo with a link to the homepage", () => {

@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { DataType } from "../../types";
+import { FC, useEffect, useState } from "react";
 import "./style.scss";
-import { Button } from "../../components/Button/Button.tsx";
+import { DataType } from "../../types";
+import { FavoriteCard } from "../../components/FavoriteCard/FavoriteCard";
 
-export const Favorites: React.FC = () => {
+export const Favorites: FC = () => {
   const [favorites, setFavorites] = useState<DataType[]>([]);
 
   useEffect(() => {
@@ -29,22 +28,13 @@ export const Favorites: React.FC = () => {
       <h1>Избранное</h1>
       <div className="favorites-list">
         {favorites.map((item) => (
-          <div key={item.id} className="favorites-item">
-            <Link to={`/product/${item.id}`}>
-              <img
-                src={`https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg`}
-                alt={item.artist_title}
-                className="favorites-item-image"
-              />
-            </Link>
-            <div className="favorites-item-info">
-              <h2 className="favorites-item-title">{item.title}</h2>
-              <p className="favorites-item-artist">{item.artist_title}</p>
-              <Button onClick={() => removeFavorite(item.id)}>
-                Удалить из избранного
-              </Button>
-            </div>
-          </div>
+          <FavoriteCard
+            id={item.id}
+            image_id={item.image_id}
+            artist_title={item.artist_title}
+            title={item.title}
+            removeFavorite={removeFavorite}
+          />
         ))}
       </div>
     </div>

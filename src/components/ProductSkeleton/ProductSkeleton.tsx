@@ -1,9 +1,9 @@
-import React from "react";
 import "./style.scss";
+import { FC } from "react";
 interface Props {
   isFull?: boolean;
 }
-export const ProductSkeleton: React.FC<Props> = ({ isFull }) => {
+export const ProductSkeleton: FC<Props> = ({ isFull }) => {
   return (
     <div className={`card-skeleton ${isFull ? "is-full" : ""}`}>
       <div className="skeleton-image"></div>

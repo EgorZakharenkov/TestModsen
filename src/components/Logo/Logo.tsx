@@ -1,9 +1,9 @@
-import React from "react";
+import { FC } from "react";
 
 interface Props {
   color?: string;
 }
-export const Logo: React.FC<Props> = ({ color }) => {
+export const Logo: FC<Props> = ({ color }) => {
   return (
     <div className={"logo"}>
       <svg
@@ -24,44 +24,44 @@ export const Logo: React.FC<Props> = ({ color }) => {
         <path
           d="M8 58H56"
           stroke="#E0A449"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M16 47V29"
           stroke="#E0A449"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M27 47V29"
           stroke="#E0A449"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M37 47V29"
           stroke="#E0A449"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M48 47V29"
           stroke="#E0A449"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M32.4999 5L54 18H11L32.4999 5Z"
           stroke="#E0A449"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     </div>

@@ -1,5 +1,4 @@
-// SearchContext.tsx
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, ReactNode, FC } from "react";
 
 interface SearchContextType {
   searchTerm: string;
@@ -8,9 +7,7 @@ interface SearchContextType {
 
 const SearchContext = createContext<SearchContextType | undefined>(undefined);
 
-export const SearchProvider: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+export const SearchProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   return (

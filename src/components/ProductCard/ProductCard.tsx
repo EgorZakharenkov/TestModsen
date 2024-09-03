@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "../Button/Button.tsx";
+import { Button } from "../Button/Button";
 import "./style.scss";
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
   title: string;
 }
 
-export const ProductCard: React.FC<Props> = ({
+export const ProductCard: FC<Props> = ({
   id,
   image_id,
   artist_title,

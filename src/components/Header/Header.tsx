@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { FC, useState } from "react";
 import "./style.scss";
 import logo from "@/assets/logo.svg";
 import { Link, useLocation } from "react-router-dom";
 import { useMobileView } from "../../hooks";
 
-export const Header: React.FC = () => {
+export const Header: FC = () => {
   const location = useLocation();
   const isMobile = useMobileView();
   const [menuOpen, setMenuOpen] = useState(false);

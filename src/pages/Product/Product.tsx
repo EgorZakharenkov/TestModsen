@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, FC } from "react";
 import { useParams } from "react-router-dom";
-import { useFetchData } from "../../hooks";
-import { DataType, ResponseFullProductType } from "../../types";
-import { ProductSkeleton } from "@components/ProductSkeleton/ProductSkeleton.tsx";
-import { Button } from "@components/Button/Button.tsx";
 
 import "./style.scss";
+import { useFetchData } from "../../hooks";
+import { DataType, ResponseFullProductType } from "../../types";
+import { ProductSkeleton } from "../../components/ProductSkeleton/ProductSkeleton";
+import { Button } from "../../components/Button/Button";
 
-export const Product: React.FC = () => {
+export const Product: FC = () => {
   const { id } = useParams<{ id: string }>();
   const { data, loading, error } = useFetchData<ResponseFullProductType>(
     `https://api.artic.edu/api/v1/artworks/${id}?fields=id,title,artist_title,date_display,image_id,place_of_origin`,

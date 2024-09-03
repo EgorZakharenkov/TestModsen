@@ -1,9 +1,9 @@
-import React from "react";
 import modsen_logo from "@/assets/modsen.svg";
 import "./style.scss";
-import { Logo } from "../Logo/Logo.tsx";
+import { Logo } from "../Logo/Logo";
 import { Link } from "react-router-dom";
-export const Footer: React.FC = () => {
+import { FC } from "react";
+export const Footer: FC = () => {
   return (
     <footer className={"footer"}>
       <div className={"footer__logo"}>

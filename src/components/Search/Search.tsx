@@ -1,10 +1,10 @@
-import React, { useRef } from "react";
-import { useSearch } from "../../context/SearchContext.tsx";
+import { FC, useRef } from "react";
+import { useSearch } from "../../context/SearchContext";
 import * as z from "zod";
 import { useFormik } from "formik";
 import "./style.scss";
 
-export const Search: React.FC = () => {
+export const Search: FC = () => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const { setSearchTerm } = useSearch();
 

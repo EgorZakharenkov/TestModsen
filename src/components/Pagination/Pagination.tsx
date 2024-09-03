@@ -1,13 +1,14 @@
-import React from "react";
-import { Button } from "../Button/Button.tsx";
+import { Button } from "../Button/Button";
+import { FC } from "react";
 import "./style.scss";
+
 interface Props {
   page: number;
   totalPages: number;
   setPage: (page: number) => void;
 }
 
-export const Pagination: React.FC<Props> = ({ page, setPage, totalPages }) => {
+export const Pagination: FC<Props> = ({ page, setPage, totalPages }) => {
   if (totalPages <= 1) return null;
   return (
     <div className="pagination">

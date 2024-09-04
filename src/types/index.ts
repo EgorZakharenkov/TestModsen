@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type DataType = {
   title: string;
   artist_title: string;
@@ -22,4 +24,9 @@ export type ResponseType = {
     limit: number;
     total: number;
   };
+};
+
+export type RoutesType = {
+  path: string;
+  page: ReactNode;
 };

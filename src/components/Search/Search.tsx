@@ -9,7 +9,7 @@ export const Search: FC = () => {
   const { setSearchTerm } = useSearch();
 
   const searchSchema = z.object({
-    value: z.string().max(12, 'Максимальная длина строки - 12 символов'),
+    value: z.string().min(1, 'Минимальная длина строки - 2 символа').max(12, 'Максимальная длина строки - 12 символов'),
   });
 
   const validate = (values: { value: string }) => {
@@ -18,12 +18,16 @@ export const Search: FC = () => {
       return validation.error.flatten().fieldErrors;
     }
     return {};
+    asa;
   };
 
   const formik = useFormik({
     initialValues: {
       value: '',
     },
+    validateOnChange: true,
+    validateOnMount: true,
+    validateOnBlur: true,
     validate,
     onSubmit: () => {
       if (timeoutRef.current) {

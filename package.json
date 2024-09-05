@@ -14,7 +14,6 @@
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
     "@types/testing-library__react": "^10.0.1",
-    "eslint-import-resolver-typescript": "^3.6.3",
     "formik": "^2.4.6",
     "husky": "^9.1.5",
     "lodash.merge": "^4.6.2",
@@ -24,6 +23,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.1",
     "scss": "^0.2.4",
+    "vite-tsconfig-paths": "^5.0.1",
     "yarn": "^1.22.22",
     "zod": "^3.23.8"
   },
@@ -55,6 +55,7 @@
     "@vitejs/plugin-vue": "^5.1.3",
     "babel-jest": "^29.7.0",
     "eslint": "^9.9.0",
+    "eslint-import-resolver-typescript": "^3.6.3",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",

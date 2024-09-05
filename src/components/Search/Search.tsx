@@ -18,7 +18,6 @@ export const Search: FC = () => {
       return validation.error.flatten().fieldErrors;
     }
     return {};
-    asa;
   };
 
   const formik = useFormik({

@@ -1,19 +1,19 @@
-import { Home } from "../pages/Home/Home.tsx";
-import { Product } from "../pages/Product/Product.tsx";
-import { Favorites } from "../pages/Favorites/Favorites.tsx";
-import { RoutesType } from "../types";
+import { Home } from '../pages/Home/Home.tsx';
+import { Product } from '../pages/Product/Product.tsx';
+import { Favorites } from '../pages/Favorites/Favorites.tsx';
+import { RoutesType } from '../types';
 
 export const routes: RoutesType[] = [
   {
-    path: "/",
+    path: '/',
     page: <Home />,
   },
   {
-    path: "/product/:id",
+    path: '/product/:id',
     page: <Product />,
   },
   {
-    path: "/Favorites",
+    path: '/Favorites',
     page: <Favorites />,
   },
 ];

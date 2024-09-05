@@ -1,13 +1,13 @@
-import { FC, useEffect, useState } from "react";
-import "./style.scss";
-import { DataType } from "../../types";
-import { FavoriteCard } from "../../components/FavoriteCard/FavoriteCard";
+import { FC, useEffect, useState } from 'react';
+import './style.scss';
+import { DataType } from '../../types';
+import { FavoriteCard } from '../../components/FavoriteCard/FavoriteCard';
 
 export const Favorites: FC = () => {
   const [favorites, setFavorites] = useState<DataType[]>([]);
 
   useEffect(() => {
-    const savedFavorites = sessionStorage.getItem("favorites");
+    const savedFavorites = sessionStorage.getItem('favorites');
     if (savedFavorites) {
       setFavorites(JSON.parse(savedFavorites));
     }
@@ -16,7 +16,7 @@ export const Favorites: FC = () => {
   const removeFavorite = (id: number) => {
     const updatedFavorites = favorites.filter((item) => item.id !== id);
     setFavorites(updatedFavorites);
-    sessionStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+    sessionStorage.setItem('favorites', JSON.stringify(updatedFavorites));
   };
 
   if (favorites.length === 0) {

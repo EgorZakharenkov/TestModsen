@@ -1,30 +1,30 @@
-import { render, screen } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
-import { Header } from "./Header";
-import "@testing-library/jest-dom";
+import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import { Header } from './Header';
+import '@testing-library/jest-dom';
 
-describe("Header", () => {
-  it("renders the logo with a link to the homepage", () => {
+describe('Header', () => {
+  it('renders the logo with a link to the homepage', () => {
     render(
       <MemoryRouter>
         <Header />
-      </MemoryRouter>,
+      </MemoryRouter>
     );
 
-    const logoLink = screen.getByRole("link", { name: /logo/i });
+    const logoLink = screen.getByRole('link', { name: /logo/i });
     expect(logoLink).toBeInTheDocument();
-    expect(logoLink).toHaveAttribute("href", "/");
+    expect(logoLink).toHaveAttribute('href', '/');
   });
 
-  it("renders the navigation links", () => {
+  it('renders the navigation links', () => {
     render(
       <MemoryRouter>
         <Header />
-      </MemoryRouter>,
+      </MemoryRouter>
     );
 
-    const homeLink = screen.getByRole("link", { name: "Главная" });
-    const favoritesLink = screen.getByRole("link", { name: "Избранное" });
+    const homeLink = screen.getByRole('link', { name: 'Главная' });
+    const favoritesLink = screen.getByRole('link', { name: 'Избранное' });
 
     expect(homeLink).toBeInTheDocument();
     expect(favoritesLink).toBeInTheDocument();

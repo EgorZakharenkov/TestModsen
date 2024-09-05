@@ -29,7 +29,9 @@
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
 
   &.active {
     background-color: #e63946;

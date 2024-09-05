@@ -1,8 +1,8 @@
-import { render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom";
-import { Favorites } from "./Favorites";
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { Favorites } from './Favorites';
 
-describe("Favorites component", () => {
+describe('Favorites component', () => {
   beforeEach(() => {
     sessionStorage.clear();
   });
@@ -10,8 +10,6 @@ describe("Favorites component", () => {
   it("displays 'no favorites' message when there are no favorites", () => {
     render(<Favorites />);
 
-    expect(
-      screen.getByText("Избранных элементов пока нет"),
-    ).toBeInTheDocument();
+    expect(screen.getByText('Избранных элементов пока нет')).toBeInTheDocument();
   });
 });

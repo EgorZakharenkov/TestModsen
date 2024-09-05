@@ -1,15 +1,15 @@
-import { FC, useRef } from "react";
-import { useSearch } from "../../context/SearchContext";
-import * as z from "zod";
-import { useFormik } from "formik";
-import "./style.scss";
+import { FC, useRef } from 'react';
+import { useSearch } from '../../context/SearchContext';
+import * as z from 'zod';
+import { useFormik } from 'formik';
+import './style.scss';
 
 export const Search: FC = () => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const { setSearchTerm } = useSearch();
 
   const searchSchema = z.object({
-    value: z.string().max(12, "Максимальная длина строки - 12 символов"),
+    value: z.string().max(12, 'Максимальная длина строки - 12 символов'),
   });
 
   const validate = (values: { value: string }) => {
@@ -22,7 +22,7 @@ export const Search: FC = () => {
 
   const formik = useFormik({
     initialValues: {
-      value: "",
+      value: '',
     },
     validate,
     onSubmit: () => {
@@ -49,9 +49,7 @@ export const Search: FC = () => {
           type="text"
           placeholder="Поиск..."
         />
-        {formik.touched.value && formik.errors.value && (
-          <p className="error-message">{formik.errors.value}</p>
-        )}
+        {formik.touched.value && formik.errors.value && <p className="error-message">{formik.errors.value}</p>}
       </form>
     </div>
   );

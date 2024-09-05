@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import { Button } from "../Button/Button";
-import "./style.scss";
-import { FC } from "react";
+import { Link } from 'react-router-dom';
+import { Button } from '../Button/Button';
+import './style.scss';
+import { FC } from 'react';
 
 interface Props {
   id: number;
@@ -11,13 +11,7 @@ interface Props {
   removeFavorite: (id: number) => void;
 }
 
-export const FavoriteCard: FC<Props> = ({
-  id,
-  artist_title,
-  title,
-  image_id,
-  removeFavorite,
-}) => {
+export const FavoriteCard: FC<Props> = ({ id, artist_title, title, image_id, removeFavorite }) => {
   return (
     <div key={id} className="favorites-item">
       <Link to={`/product/${id}`}>
@@ -30,9 +24,7 @@ export const FavoriteCard: FC<Props> = ({
       <div className="favorites-item-info">
         <h2 className="favorites-item-title">{title}</h2>
         <p className="favorites-item-artist">{artist_title}</p>
-        <Button onClick={() => removeFavorite(id)}>
-          Удалить из избранного
-        </Button>
+        <Button onClick={() => removeFavorite(id)}>Удалить из избранного</Button>
       </div>
     </div>
   );

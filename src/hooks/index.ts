@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from 'react';
 
 export function useFetchData<T>(url: string) {
   const [data, setData] = useState<T | null>(null);
@@ -10,7 +10,7 @@ export function useFetchData<T>(url: string) {
     fetch(url)
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error('Network response was not ok');
         }
         return response.json();
       })
@@ -37,8 +37,8 @@ export const useMobileView = () => {
       setIsMobile(window.innerWidth <= 550);
     };
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return isMobile;

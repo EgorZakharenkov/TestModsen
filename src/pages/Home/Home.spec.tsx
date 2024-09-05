@@ -1,27 +1,27 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import "@testing-library/jest-dom";
-import { Home } from "./Home";
-import { useSearch } from "../../context/SearchContext";
-import { useFetchData } from "../../hooks";
+import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { Home } from './Home';
+import { useSearch } from '../../context/SearchContext';
+import { useFetchData } from '../../hooks';
 
-jest.mock("../../components/Search/Search.tsx", () => ({
+jest.mock('../../components/Search/Search.tsx', () => ({
   Search: jest.fn(() => <div>Поиск...</div>),
 }));
 
-jest.mock("../../components/Filter/Filter.tsx", () => ({
+jest.mock('../../components/Filter/Filter.tsx', () => ({
   Filter: jest.fn(({ filter, setFilter }) => (
     <div>
-      <button onClick={() => setFilter("новый")}>По алфавиту</button>
+      <button onClick={() => setFilter('новый')}>По алфавиту</button>
       <span>Текущий фильтр: {filter}</span>
     </div>
   )),
 }));
 
-jest.mock("../../components/ProductCard/ProductCard.tsx", () => ({
+jest.mock('../../components/ProductCard/ProductCard.tsx', () => ({
   ProductCard: jest.fn(({ title }) => <div>{title}</div>),
 }));
 
-jest.mock("../../components/Pagination/Pagination.tsx", () => ({
+jest.mock('../../components/Pagination/Pagination.tsx', () => ({
   Pagination: jest.fn(({ page, totalPages, setPage }) => (
     <div>
       <button onClick={() => setPage(page - 1)} disabled={page <= 1}>
@@ -37,24 +37,24 @@ jest.mock("../../components/Pagination/Pagination.tsx", () => ({
   )),
 }));
 
-jest.mock("../../components/ProductSkeleton/ProductSkeleton.tsx", () => ({
+jest.mock('../../components/ProductSkeleton/ProductSkeleton.tsx', () => ({
   ProductSkeleton: jest.fn(() => <div>Skeleton</div>),
 }));
 
-jest.mock("../../hooks", () => ({
+jest.mock('../../hooks', () => ({
   useFetchData: jest.fn(),
 }));
 
-jest.mock("../../context/SearchContext.tsx", () => ({
+jest.mock('../../context/SearchContext.tsx', () => ({
   useSearch: jest.fn(),
 }));
 
-describe("Home component", () => {
+describe('Home component', () => {
   beforeEach(() => {
-    (useSearch as jest.Mock).mockReturnValue({ searchTerm: "" });
+    (useSearch as jest.Mock).mockReturnValue({ searchTerm: '' });
   });
 
-  it("renders the Home component with search, filter, and pagination", () => {
+  it('renders the Home component with search, filter, and pagination', () => {
     (useFetchData as jest.Mock).mockReturnValue({
       data: { data: [], pagination: { total: 40 } },
       loading: false,
@@ -62,26 +62,26 @@ describe("Home component", () => {
     });
 
     render(<Home />);
-    expect(screen.getByText("Поиск...")).toBeInTheDocument();
-    expect(screen.getByText("По алфавиту")).toBeInTheDocument();
-    expect(screen.getByText("Вперед")).toBeInTheDocument();
+    expect(screen.getByText('Поиск...')).toBeInTheDocument();
+    expect(screen.getByText('По алфавиту')).toBeInTheDocument();
+    expect(screen.getByText('Вперед')).toBeInTheDocument();
   });
 
-  it("displays product cards when data is fetched", async () => {
+  it('displays product cards when data is fetched', async () => {
     (useFetchData as jest.Mock).mockReturnValue({
       data: {
         data: [
           {
             id: 1,
-            title: "Artwork 1",
-            artist_title: "Artist 1",
-            image_id: "image1",
+            title: 'Artwork 1',
+            artist_title: 'Artist 1',
+            image_id: 'image1',
           },
           {
             id: 2,
-            title: "Artwork 2",
-            artist_title: "Artist 2",
-            image_id: "image2",
+            title: 'Artwork 2',
+            artist_title: 'Artist 2',
+            image_id: 'image2',
           },
         ],
         pagination: { total: 10 },
@@ -92,11 +92,11 @@ describe("Home component", () => {
 
     render(<Home />);
 
-    expect(await screen.findByText("Artwork 1")).toBeInTheDocument();
-    expect(await screen.findByText("Artwork 2")).toBeInTheDocument();
+    expect(await screen.findByText('Artwork 1')).toBeInTheDocument();
+    expect(await screen.findByText('Artwork 2')).toBeInTheDocument();
   });
 
-  it("shows loading skeletons while data is loading", () => {
+  it('shows loading skeletons while data is loading', () => {
     (useFetchData as jest.Mock).mockReturnValue({
       data: null,
       loading: true,
@@ -105,22 +105,22 @@ describe("Home component", () => {
 
     render(<Home />);
 
-    expect(screen.getAllByText("Skeleton")).toHaveLength(5);
+    expect(screen.getAllByText('Skeleton')).toHaveLength(5);
   });
 
-  it("displays an error message when there is an error", () => {
+  it('displays an error message when there is an error', () => {
     (useFetchData as jest.Mock).mockReturnValue({
       data: null,
       loading: false,
-      error: "Error occurred",
+      error: 'Error occurred',
     });
 
     render(<Home />);
 
-    expect(screen.getByText("Ошибка загрузки данных")).toBeInTheDocument();
+    expect(screen.getByText('Ошибка загрузки данных')).toBeInTheDocument();
   });
 
-  it("updates filter and displays applied filter", () => {
+  it('updates filter and displays applied filter', () => {
     (useFetchData as jest.Mock).mockReturnValue({
       data: { data: [], pagination: { total: 0 } },
       loading: false,
@@ -129,8 +129,8 @@ describe("Home component", () => {
 
     render(<Home />);
 
-    fireEvent.click(screen.getByText("По алфавиту"));
+    fireEvent.click(screen.getByText('По алфавиту'));
 
-    expect(screen.getByText("Текущий фильтр: новый")).toBeInTheDocument();
+    expect(screen.getByText('Текущий фильтр: новый')).toBeInTheDocument();
   });
 });

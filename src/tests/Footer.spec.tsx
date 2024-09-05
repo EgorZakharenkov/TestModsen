@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { Footer } from './Footer';
 import '@testing-library/jest-dom';
+import { Footer } from '../components/Footer/Footer';
 
 describe('Footer', () => {
   it('renders the Modsen logo with a link to Modsen website', () => {

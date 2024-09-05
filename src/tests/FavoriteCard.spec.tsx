@@ -1,7 +1,7 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { FavoriteCard } from './FavoriteCard';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { FavoriteCard } from '../components/FavoriteCard/FavoriteCard';
 
 describe('FavoriteCard component', () => {
   const mockRemoveFavorite = jest.fn();

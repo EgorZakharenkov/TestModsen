@@ -1,9 +1,9 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Search } from './Search';
-import { useSearch } from '../../context/SearchContext';
+import { useSearch } from '../context/SearchContext';
+import { Search } from '../components/Search/Search';
 
-jest.mock('../../context/SearchContext.tsx');
+jest.mock('../context/SearchContext');
 
 describe('Search', () => {
   const setSearchTermMock = jest.fn();

@@ -1,14 +1,14 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import { BrowserRouter as Router } from "react-router-dom";
-import { useMenuToggle } from "../../hooks";
-import { BurgerMenu } from "./BurgerMenu";
-import "@testing-library/jest-dom";
+import { fireEvent, render, screen } from '@testing-library/react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import '@testing-library/jest-dom';
+import { useMenuToggle } from '../utils/hooks';
+import { BurgerMenu } from '../components/BurgerMenu/BurgerMenu';
 
-jest.mock("../../hooks", () => ({
+jest.mock('../utils/hooks', () => ({
   useMenuToggle: jest.fn(),
 }));
 
-describe("BurgerMenu", () => {
+describe('BurgerMenu', () => {
   const mockToggleMenu = jest.fn();
   const mockCloseMenu = jest.fn();
 
@@ -20,7 +20,7 @@ describe("BurgerMenu", () => {
     });
   });
 
-  test("should open the menu when burger button is clicked", () => {
+  test('should open the menu when burger button is clicked', () => {
     (useMenuToggle as jest.Mock).mockReturnValue({
       isOpen: true,
       toggleMenu: mockToggleMenu,
@@ -30,27 +30,27 @@ describe("BurgerMenu", () => {
     render(
       <Router>
         <BurgerMenu />
-      </Router>,
+      </Router>
     );
 
-    expect(screen.getByText("Главная")).toBeInTheDocument();
-    expect(screen.getByText("Избранное")).toBeInTheDocument();
+    expect(screen.getByText('Главная')).toBeInTheDocument();
+    expect(screen.getByText('Избранное')).toBeInTheDocument();
   });
 
-  test("should call toggleMenu function when burger button is clicked", () => {
+  test('should call toggleMenu function when burger button is clicked', () => {
     render(
       <Router>
         <BurgerMenu />
-      </Router>,
+      </Router>
     );
 
-    const burgerButton = screen.getByRole("button");
+    const burgerButton = screen.getByRole('button');
     fireEvent.click(burgerButton);
 
     expect(mockToggleMenu).toHaveBeenCalled();
   });
 
-  test("should close the menu when clicking outside", () => {
+  test('should close the menu when clicking outside', () => {
     (useMenuToggle as jest.Mock).mockReturnValue({
       isOpen: true,
       toggleMenu: mockToggleMenu,
@@ -60,7 +60,7 @@ describe("BurgerMenu", () => {
     render(
       <Router>
         <BurgerMenu />
-      </Router>,
+      </Router>
     );
 
     fireEvent.click(document.body);

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import { ProductCard } from './ProductCard';
 import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
+import { ProductCard } from '../components/ProductCard/ProductCard';
 
 describe('ProductCard', () => {
   it('renders correctly with given props', () => {

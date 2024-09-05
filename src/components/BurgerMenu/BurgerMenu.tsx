@@ -1,7 +1,7 @@
-import { useMenuToggle } from "../../hooks";
-import { FC, useEffect } from "react";
-import { Link } from "react-router-dom";
-import "./style.scss";
+import { FC, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import './style.scss';
+import { useMenuToggle } from '../../utils/hooks';
 
 export const BurgerMenu: FC = () => {
   const { isOpen, toggleMenu, closeMenu } = useMenuToggle();
@@ -9,13 +9,13 @@ export const BurgerMenu: FC = () => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
-      if (!target.closest(".menu") && !target.closest(".burger-button")) {
+      if (!target.closest('.menu') && !target.closest('.burger-button')) {
         closeMenu();
       }
     };
 
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
   }, [closeMenu]);
 
   return (
@@ -29,10 +29,10 @@ export const BurgerMenu: FC = () => {
         <div className="menu">
           <ul>
             <li>
-              <Link to={"/"}>Главная</Link>
+              <Link to={'/'}>Главная</Link>
             </li>
             <li>
-              <Link to={"/Favorites"}>Избранное</Link>
+              <Link to={'/Favorites'}>Избранное</Link>
             </li>
           </ul>
         </div>

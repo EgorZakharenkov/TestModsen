@@ -2,16 +2,9 @@ import { Link } from 'react-router-dom';
 import { Button } from '../Button/Button';
 import './style.scss';
 import { FC } from 'react';
+import { FavoriteCardProps } from '../../utils/types';
 
-interface Props {
-  id: number;
-  image_id: string;
-  artist_title: string;
-  title: string;
-  removeFavorite: (id: number) => void;
-}
-
-export const FavoriteCard: FC<Props> = ({ id, artist_title, title, image_id, removeFavorite }) => {
+export const FavoriteCard: FC<FavoriteCardProps> = ({ id, artist_title, title, image_id, removeFavorite }) => {
   return (
     <div key={id} className="favorites-item">
       <Link to={`/product/${id}`}>

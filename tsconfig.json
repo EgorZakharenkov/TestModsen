@@ -10,10 +10,18 @@
   ],
   "compilerOptions": {
     "baseUrl": "./src",
+    "jsx": "react-jsx",
     "paths": {
       "@/*": [
         "./*"
       ]
     }
-  }
+  },
+  "include": [
+    "src/**/*"
+  ],
+  // включите папку с вашим кодом
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -1,14 +1,8 @@
 import './style.scss';
+import { FC } from 'react';
+import { ButtonProps } from '../../utils/types';
 
-interface Props {
-  className?: string;
-  children: string;
-  onClick?: () => void;
-  disabled?: boolean;
-  variant?: 'default' | 'full';
-}
-
-export const Button: React.FC<Props> = ({ className, children, onClick, disabled, variant = 'default' }) => {
+export const Button: FC<ButtonProps> = ({ className, children, onClick, disabled, variant = 'default' }) => {
   return (
     <button disabled={disabled} onClick={onClick} className={`button ${className} ${variant}`}>
       {children}

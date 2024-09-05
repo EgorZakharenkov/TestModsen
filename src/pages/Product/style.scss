@@ -4,12 +4,12 @@
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 16px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px #353535;
   color: #444;
   transition: box-shadow 0.3s ease-in-out;
 
   &:hover {
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 15px 30px #353535;
   }
 
   .product-header {
@@ -51,7 +51,7 @@
       height: auto;
       margin-bottom: 20px;
       border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 20px #353535;
       transition: transform 0.3s ease;
 
       &:hover {

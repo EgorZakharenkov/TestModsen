@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Product } from './Product';
-import { useFetchData } from '../../hooks';
+import { Product } from '../pages/Product/Product';
+import { useFetchData } from '../utils/hooks';
 import { useParams } from 'react-router-dom';
 
-jest.mock('../../hooks', () => ({
+jest.mock('../utils/hooks', () => ({
   useFetchData: jest.fn(),
 }));
 
@@ -12,11 +12,11 @@ jest.mock('react-router-dom', () => ({
   useParams: jest.fn(),
 }));
 
-jest.mock('../../components/ProductSkeleton/ProductSkeleton.tsx', () => ({
+jest.mock('../components/ProductSkeleton/ProductSkeleton.tsx', () => ({
   ProductSkeleton: jest.fn(() => <div>Product Skeleton</div>),
 }));
 
-jest.mock('../../components/Button/Button.tsx', () => ({
+jest.mock('../components/Button/Button.tsx', () => ({
   Button: jest.fn(({ onClick, children, className }) => (
     <button className={className} onClick={onClick}>
       {children}

@@ -1,15 +1,15 @@
-import { useState, useEffect, FC } from 'react';
-import './style.scss';
-import { ResponseType, DataType } from '../../types';
+import { FC, useEffect, useState } from 'react';
+import { DataType, ResponseType } from '../../utils/types';
 import { ProductSkeleton } from '../../components/ProductSkeleton/ProductSkeleton';
 import { useSearch } from '../../context/SearchContext';
 import { Search } from '../../components/Search/Search';
 import { Filter } from '../../components/Filter/Filter';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
 import { Pagination } from '../../components/Pagination/Pagination';
-import { useFetchData } from '../../hooks';
-
-const ITEMS_PER_PAGE = 5;
+import { useFetchData } from '../../utils/hooks';
+import { filteredData } from '../../utils/api';
+import { ITEMS_PER_PAGE } from '../../constants';
+import './style.scss';
 
 export const Home: FC = () => {
   const [page, setPage] = useState(1);
@@ -27,23 +27,6 @@ export const Home: FC = () => {
       setTotalPages(Math.ceil(totalItems / ITEMS_PER_PAGE));
     }
   }, [data]);
-
-  const filteredData = () => {
-    if (!data?.data) return [];
-    return data.data.slice().sort((a, b) => {
-      const aTitle = a.title ?? '';
-      const bTitle = b.title ?? '';
-      const aArtist = a.artist_title ?? '';
-      const bArtist = b.artist_title ?? '';
-
-      if (filter === 'title') {
-        return aTitle.localeCompare(bTitle);
-      } else if (filter === 'artist_title') {
-        return aArtist.localeCompare(bArtist);
-      }
-      return 0;
-    });
-  };
 
   if (error) return <div className="error">Ошибка загрузки данных</div>;
 
@@ -64,7 +47,7 @@ export const Home: FC = () => {
         </div>
       ) : (
         <div className="card-container">
-          {filteredData().map((item: DataType) => (
+          {filteredData(data, filter).map((item: DataType) => (
             <ProductCard
               id={item.id}
               title={item.title}

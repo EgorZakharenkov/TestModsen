@@ -1,24 +1,20 @@
 import { FC, useEffect, useState } from 'react';
 import './style.scss';
-import { DataType } from '../../types';
+import { DataType } from '../../utils/types';
 import { FavoriteCard } from '../../components/FavoriteCard/FavoriteCard';
+import { FavoritesManager } from '../../utils/sessionStorage';
 
 export const Favorites: FC = () => {
   const [favorites, setFavorites] = useState<DataType[]>([]);
 
   useEffect(() => {
-    const savedFavorites = sessionStorage.getItem('favorites');
-    if (savedFavorites) {
-      setFavorites(JSON.parse(savedFavorites));
-    }
+    setFavorites(FavoritesManager.getFavorites());
   }, []);
 
-  const removeFavorite = (id: number) => {
-    const updatedFavorites = favorites.filter((item) => item.id !== id);
-    setFavorites(updatedFavorites);
-    sessionStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+  const handleDelete = (id: number) => {
+    FavoritesManager.removeFavorite(id);
+    setFavorites(FavoritesManager.getFavorites());
   };
-
   if (favorites.length === 0) {
     return <div className="favorites-empty">Избранных элементов пока нет</div>;
   }
@@ -33,7 +29,7 @@ export const Favorites: FC = () => {
             image_id={item.image_id}
             artist_title={item.artist_title}
             title={item.title}
-            removeFavorite={removeFavorite}
+            removeFavorite={() => handleDelete(item.id)}
           />
         ))}
       </div>

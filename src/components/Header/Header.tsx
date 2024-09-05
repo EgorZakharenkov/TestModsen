@@ -2,23 +2,13 @@ import { FC, useState } from 'react';
 import './style.scss';
 import logo from '@/assets/logo.svg';
 import { Link, useLocation } from 'react-router-dom';
-import { useMobileView } from '../../hooks';
+import { useMobileView } from '../../utils/hooks';
+import { links } from '../../constants';
 
 export const Header: FC = () => {
   const location = useLocation();
   const isMobile = useMobileView();
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const links = [
-    {
-      name: 'Главная',
-      path: '/',
-    },
-    {
-      name: 'Избранное',
-      path: '/Favorites',
-    },
-  ];
 
   return (
     <header className="header">

@@ -1,25 +1,12 @@
 import { FC, useRef } from 'react';
 import { useSearch } from '../../context/SearchContext';
-import * as z from 'zod';
-import { useFormik } from 'formik';
 import './style.scss';
+import { useFormik } from 'formik';
+import { validate } from '../../utils/api';
 
 export const Search: FC = () => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const { setSearchTerm } = useSearch();
-
-  const searchSchema = z.object({
-    value: z.string().min(1, 'Минимальная длина строки - 2 символа').max(12, 'Максимальная длина строки - 12 символов'),
-  });
-
-  const validate = (values: { value: string }) => {
-    const validation = searchSchema.safeParse(values);
-    if (!validation.success) {
-      return validation.error.flatten().fieldErrors;
-    }
-    return {};
-  };
-
   const formik = useFormik({
     initialValues: {
       value: '',
@@ -38,7 +25,6 @@ export const Search: FC = () => {
       }, 400);
     },
   });
-
   return (
     <div className="search">
       <form onSubmit={formik.handleSubmit}>

@@ -1,7 +1,7 @@
-import { Home } from '../pages/Home/Home.tsx';
-import { Product } from '../pages/Product/Product.tsx';
-import { Favorites } from '../pages/Favorites/Favorites.tsx';
-import { RoutesType } from '../types';
+import { Home } from '../pages/Home/Home';
+import { Product } from '../pages/Product/Product';
+import { Favorites } from '../pages/Favorites/Favorites';
+import { RoutesType } from '../utils/types';
 
 export const routes: RoutesType[] = [
   {
@@ -15,5 +15,23 @@ export const routes: RoutesType[] = [
   {
     path: '/Favorites',
     page: <Favorites />,
+  },
+];
+
+export const ITEMS_PER_PAGE = 5;
+
+export const FILTER_OPTIONS = [
+  { value: 'title', label: 'По названию' },
+  { value: 'artist_title', label: 'По артисту' },
+];
+
+export const links = [
+  {
+    name: 'Главная',
+    path: '/',
+  },
+  {
+    name: 'Избранное',
+    path: '/Favorites',
   },
 ];

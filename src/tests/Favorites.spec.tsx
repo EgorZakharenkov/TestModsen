@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Favorites } from './Favorites';
+import { Favorites } from '../pages/Favorites/Favorites';
 
 describe('Favorites component', () => {
   beforeEach(() => {

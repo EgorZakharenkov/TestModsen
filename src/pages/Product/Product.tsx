@@ -2,10 +2,12 @@ import { FC, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import './style.scss';
-import { useFetchData } from '../../hooks';
-import { DataType, ResponseFullProductType } from '../../types';
+import { useFetchData } from '../../utils/hooks';
+import { ResponseFullProductType } from '../../utils/types';
 import { ProductSkeleton } from '../../components/ProductSkeleton/ProductSkeleton';
 import { Button } from '../../components/Button/Button';
+import { FavoritesManager } from '../../utils/sessionStorage';
+import { handleSubmit } from '../../utils/api';
 
 export const Product: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -16,26 +18,8 @@ export const Product: FC = () => {
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
   useEffect(() => {
-    if (data?.data) {
-      const savedFavorites = sessionStorage.getItem('favorites');
-      const favorites = savedFavorites ? JSON.parse(savedFavorites) : [];
-      setIsFavorite(favorites.some((item: DataType) => item.id === data.data?.id));
-    }
-  }, [data]);
-
-  const handleFavoriteClick = () => {
-    if (data?.data) {
-      const savedFavorites = sessionStorage.getItem('favorites');
-      const favorites = savedFavorites ? JSON.parse(savedFavorites) : [];
-
-      const updatedFavorites = isFavorite
-        ? favorites.filter((item: DataType) => item.id !== data.data?.id)
-        : [...favorites, data.data];
-
-      sessionStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-      setIsFavorite(!isFavorite);
-    }
-  };
+    setIsFavorite(FavoritesManager.isFavorite(data?.data.id));
+  }, [data?.data.id, id]);
 
   if (loading)
     return (
@@ -52,7 +36,11 @@ export const Product: FC = () => {
         <div className="productPage">
           <div className="product-header">
             <h1 className="product-title">{data.data.title}</h1>
-            <Button variant={'full'} className={isFavorite ? 'active' : ''} onClick={handleFavoriteClick}>
+            <Button
+              variant={'full'}
+              className={isFavorite ? 'active' : ''}
+              onClick={() => handleSubmit(isFavorite, setIsFavorite, data.data.id, data.data)}
+            >
               {isFavorite ? 'Удалить из избранного' : 'Добавить в избранное'}
             </Button>
           </div>

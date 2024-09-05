@@ -1,9 +1,7 @@
 import { FC } from 'react';
+import { LogoProps } from '../../utils/types';
 
-interface Props {
-  color?: string;
-}
-export const Logo: FC<Props> = ({ color }) => {
+export const Logo: FC<LogoProps> = ({ color }) => {
   return (
     <div className={'logo'}>
       <svg width="206" height="63" viewBox="0 0 206 63" fill="none" xmlns="http://www.w3.org/2000/svg">

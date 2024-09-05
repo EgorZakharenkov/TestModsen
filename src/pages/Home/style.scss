@@ -10,15 +10,17 @@
     flex-wrap: wrap;
     justify-content: center;
   }
+
   .spinner {
-    font-size: 1.5rem;
     color: #666;
   }
+
   .skeleton-items {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
   }
+
   .card-container {
     display: flex;
     flex-wrap: wrap;

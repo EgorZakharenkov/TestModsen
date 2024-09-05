@@ -1,14 +1,14 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Home } from './Home';
-import { useSearch } from '../../context/SearchContext';
-import { useFetchData } from '../../hooks';
+import { Home } from '../pages/Home/Home';
+import { useSearch } from '../context/SearchContext';
+import { useFetchData } from '../utils/hooks';
 
-jest.mock('../../components/Search/Search.tsx', () => ({
+jest.mock('../components/Search/Search.tsx', () => ({
   Search: jest.fn(() => <div>Поиск...</div>),
 }));
 
-jest.mock('../../components/Filter/Filter.tsx', () => ({
+jest.mock('../components/Filter/Filter.tsx', () => ({
   Filter: jest.fn(({ filter, setFilter }) => (
     <div>
       <button onClick={() => setFilter('новый')}>По алфавиту</button>
@@ -17,11 +17,11 @@ jest.mock('../../components/Filter/Filter.tsx', () => ({
   )),
 }));
 
-jest.mock('../../components/ProductCard/ProductCard.tsx', () => ({
+jest.mock('../components/ProductCard/ProductCard.tsx', () => ({
   ProductCard: jest.fn(({ title }) => <div>{title}</div>),
 }));
 
-jest.mock('../../components/Pagination/Pagination.tsx', () => ({
+jest.mock('../components/Pagination/Pagination.tsx', () => ({
   Pagination: jest.fn(({ page, totalPages, setPage }) => (
     <div>
       <button onClick={() => setPage(page - 1)} disabled={page <= 1}>
@@ -37,15 +37,15 @@ jest.mock('../../components/Pagination/Pagination.tsx', () => ({
   )),
 }));
 
-jest.mock('../../components/ProductSkeleton/ProductSkeleton.tsx', () => ({
+jest.mock('../components/ProductSkeleton/ProductSkeleton.tsx', () => ({
   ProductSkeleton: jest.fn(() => <div>Skeleton</div>),
 }));
 
-jest.mock('../../hooks', () => ({
+jest.mock('../utils/hooks', () => ({
   useFetchData: jest.fn(),
 }));
 
-jest.mock('../../context/SearchContext.tsx', () => ({
+jest.mock('../context/SearchContext.tsx', () => ({
   useSearch: jest.fn(),
 }));
 

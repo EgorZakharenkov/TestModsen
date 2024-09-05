@@ -1,19 +1,12 @@
-import React from 'react';
 import './style.scss';
+import { FILTER_OPTIONS } from '../../constants';
+import { FilterProps } from '../../utils/types';
+import { ChangeEvent, FC } from 'react';
 
-interface Props {
-  filter: string;
-  setFilter: (filter: string) => void;
-}
-const FILTER_OPTIONS = [
-  { value: 'title', label: 'По названию' },
-  { value: 'artist_title', label: 'По артисту' },
-];
-
-export const Filter: React.FC<Props> = ({ filter, setFilter }) => {
+export const Filter: FC<FilterProps> = ({ filter, setFilter }) => {
   return (
     <div className="filter">
-      <select value={filter} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setFilter(e.target.value)}>
+      <select value={filter} onChange={(e: ChangeEvent<HTMLSelectElement>) => setFilter(e.target.value)}>
         {FILTER_OPTIONS.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label.charAt(0).toUpperCase() + option.label.slice(1)}

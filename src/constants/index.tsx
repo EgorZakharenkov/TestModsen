@@ -35,3 +35,5 @@ export const links = [
     path: '/Favorites',
   },
 ];
+
+export const LoaderSkeletonItems = [11, 12, 13, 14, 15];

@@ -3,7 +3,7 @@ import './style.scss';
 import { FC, useEffect, useState } from 'react';
 
 import { Filter, Pagination, ProductCard, ProductSkeleton, Search } from '../../components';
-import { ITEMS_PER_PAGE } from '../../constants';
+import { ITEMS_PER_PAGE, LoaderSkeletonItems } from '../../constants';
 import { useSearch } from '../../context/SearchContext';
 import { filteredData } from '../../utils/api';
 import { useFetchData } from '../../utils/hooks';
@@ -37,11 +37,9 @@ export const Home: FC = () => {
       {data?.data && data.data.length === 0 && 'Упс... Такого нет'}
       {loading ? (
         <div className={'skeleton-items'}>
-          {Array(5)
-            .fill(0)
-            .map((_, index: number) => (
-              <ProductSkeleton key={index} />
-            ))}
+          {LoaderSkeletonItems.map((key) => (
+            <ProductSkeleton key={key} />
+          ))}
         </div>
       ) : (
         <div className="card-container">

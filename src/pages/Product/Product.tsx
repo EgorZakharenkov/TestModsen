@@ -4,6 +4,7 @@ import { FC, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { Button, ProductSkeleton } from '../../components';
+import { Api } from '../../constants';
 import { handleSubmit } from '../../utils/api';
 import { useFetchData } from '../../utils/hooks';
 import { FavoritesManager } from '../../utils/sessionStorage';
@@ -12,7 +13,7 @@ import { ResponseFullProductType } from '../../utils/types';
 export const Product: FC = () => {
   const { id } = useParams<{ id: string }>();
   const { data, loading, error } = useFetchData<ResponseFullProductType>(
-    `https://api.artic.edu/api/v1/artworks/${id}?fields=id,title,artist_title,date_display,image_id,place_of_origin`
+    `${Api}/${id}?fields=id,title,artist_title,date_display,image_id,place_of_origin`
   );
 
   const [isFavorite, setIsFavorite] = useState<boolean>(false);

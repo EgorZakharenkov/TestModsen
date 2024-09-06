@@ -37,3 +37,4 @@ export const links = [
 ];
 
 export const LoaderSkeletonItems = [11, 12, 13, 14, 15];
+export const Api = 'https://api.artic.edu/api/v1/artworks';

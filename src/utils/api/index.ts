@@ -1,6 +1,7 @@
-import { DataType, ResponseType } from '../types';
 import * as z from 'zod';
+
 import { FavoritesManager } from '../sessionStorage';
+import { DataType, ResponseType } from '../types';
 
 export const filteredData = (data: ResponseType | null, filter: string) => {
   if (!data?.data) return [];

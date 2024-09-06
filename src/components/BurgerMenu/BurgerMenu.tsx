@@ -1,6 +1,8 @@
+import './style.scss';
+
 import { FC, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './style.scss';
+
 import { useMenuToggle } from '../../utils/hooks';
 
 export const BurgerMenu: FC = () => {

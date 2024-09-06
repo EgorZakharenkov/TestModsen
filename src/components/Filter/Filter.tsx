@@ -1,7 +1,9 @@
 import './style.scss';
+
+import { ChangeEvent, FC } from 'react';
+
 import { FILTER_OPTIONS } from '../../constants';
 import { FilterProps } from '../../utils/types';
-import { ChangeEvent, FC } from 'react';
 
 export const Filter: FC<FilterProps> = ({ filter, setFilter }) => {
   return (

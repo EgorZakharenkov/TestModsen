@@ -1,8 +1,12 @@
-import modsen_logo from '@/assets/modsen.svg';
 import './style.scss';
-import { Logo } from '../Logo/Logo';
-import { Link } from 'react-router-dom';
+
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
+
+import modsen_logo from '@/assets/modsen.svg';
+
+import { Logo } from '../Logo/Logo';
+
 export const Footer: FC = () => {
   return (
     <footer className={'footer'}>

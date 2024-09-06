@@ -1,7 +1,9 @@
-import { Button } from '../Button/Button';
-import { FC } from 'react';
 import './style.scss';
+
+import { FC } from 'react';
+
 import { PaginationProps } from '../../utils/types';
+import { Button } from '../index';
 
 export const Pagination: FC<PaginationProps> = ({ page, setPage, totalPages }) => {
   if (totalPages <= 1) return null;

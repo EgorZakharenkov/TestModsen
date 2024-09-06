@@ -1,8 +1,10 @@
+import '@testing-library/jest-dom';
+
 import { fireEvent, render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import '@testing-library/jest-dom';
-import { useMenuToggle } from '../utils/hooks';
+
 import { BurgerMenu } from '../components/BurgerMenu/BurgerMenu';
+import { useMenuToggle } from '../utils/hooks';
 
 jest.mock('../utils/hooks', () => ({
   useMenuToggle: jest.fn(),

@@ -1,8 +1,10 @@
-import { Link } from 'react-router-dom';
-import { Button } from '../Button/Button';
 import './style.scss';
+
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
+
 import { FavoriteCardProps } from '../../utils/types';
+import { Button } from '../index';
 
 export const FavoriteCard: FC<FavoriteCardProps> = ({ id, artist_title, title, image_id, removeFavorite }) => {
   return (

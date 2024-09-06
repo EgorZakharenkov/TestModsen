@@ -1,8 +1,10 @@
-import { FC, useEffect, useState } from 'react';
 import './style.scss';
-import { DataType } from '../../utils/types';
-import { FavoriteCard } from '../../components/FavoriteCard/FavoriteCard';
+
+import { FC, useEffect, useState } from 'react';
+
+import { FavoriteCard } from '../../components';
 import { FavoritesManager } from '../../utils/sessionStorage';
+import { DataType } from '../../utils/types';
 
 export const Favorites: FC = () => {
   const [favorites, setFavorites] = useState<DataType[]>([]);

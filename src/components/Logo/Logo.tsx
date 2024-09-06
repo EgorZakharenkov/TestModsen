@@ -1,4 +1,5 @@
 import { FC } from 'react';
+
 import { LogoProps } from '../../utils/types';
 
 export const Logo: FC<LogoProps> = ({ color }) => {

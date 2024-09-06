@@ -1,5 +1,7 @@
 import './style.scss';
+
 import { FC } from 'react';
+
 import { SkeletonProps } from '../../utils/types';
 
 export const ProductSkeleton: FC<SkeletonProps> = ({ isFull }) => {

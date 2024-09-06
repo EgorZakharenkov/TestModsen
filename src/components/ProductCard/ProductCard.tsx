@@ -1,10 +1,12 @@
+import './style.scss';
+
 import { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '../Button/Button';
-import './style.scss';
-import { ProductProps } from '../../utils/types';
-import { FavoritesManager } from '../../utils/sessionStorage';
+
 import { handleSubmit } from '../../utils/api';
+import { FavoritesManager } from '../../utils/sessionStorage';
+import { ProductProps } from '../../utils/types';
+import { Button } from '../index';
 
 export const ProductCard: FC<ProductProps> = ({ id, image_id, artist_title, title }) => {
   const [isFavorite, setIsFavorite] = useState<boolean | undefined>();

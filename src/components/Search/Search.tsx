@@ -1,7 +1,9 @@
-import { FC, useRef } from 'react';
-import { useSearch } from '../../context/SearchContext';
 import './style.scss';
+
 import { useFormik } from 'formik';
+import { FC, useRef } from 'react';
+
+import { useSearch } from '../../context/SearchContext';
 import { validate } from '../../utils/api';
 
 export const Search: FC = () => {

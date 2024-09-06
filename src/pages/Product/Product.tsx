@@ -1,13 +1,13 @@
+import './style.scss';
+
 import { FC, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import './style.scss';
-import { useFetchData } from '../../utils/hooks';
-import { ResponseFullProductType } from '../../utils/types';
-import { ProductSkeleton } from '../../components/ProductSkeleton/ProductSkeleton';
-import { Button } from '../../components/Button/Button';
-import { FavoritesManager } from '../../utils/sessionStorage';
+import { Button, ProductSkeleton } from '../../components';
 import { handleSubmit } from '../../utils/api';
+import { useFetchData } from '../../utils/hooks';
+import { FavoritesManager } from '../../utils/sessionStorage';
+import { ResponseFullProductType } from '../../utils/types';
 
 export const Product: FC = () => {
   const { id } = useParams<{ id: string }>();

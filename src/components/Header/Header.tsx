@@ -1,7 +1,10 @@
-import { FC, useState } from 'react';
 import './style.scss';
-import logo from '@/assets/logo.svg';
+
+import { FC, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+
+import logo from '@/assets/logo.svg';
+
 import { useMobileView } from '../../utils/hooks';
 
 export const Header: FC = () => {

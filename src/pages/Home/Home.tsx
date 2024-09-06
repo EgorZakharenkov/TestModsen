@@ -1,15 +1,13 @@
-import { FC, useEffect, useState } from 'react';
-import { DataType, ResponseType } from '../../utils/types';
-import { ProductSkeleton } from '../../components/ProductSkeleton/ProductSkeleton';
-import { useSearch } from '../../context/SearchContext';
-import { Search } from '../../components/Search/Search';
-import { Filter } from '../../components/Filter/Filter';
-import { ProductCard } from '../../components/ProductCard/ProductCard';
-import { Pagination } from '../../components/Pagination/Pagination';
-import { useFetchData } from '../../utils/hooks';
-import { filteredData } from '../../utils/api';
-import { ITEMS_PER_PAGE } from '../../constants';
 import './style.scss';
+
+import { FC, useEffect, useState } from 'react';
+
+import { Filter, Pagination, ProductCard, ProductSkeleton, Search } from '../../components';
+import { ITEMS_PER_PAGE } from '../../constants';
+import { useSearch } from '../../context/SearchContext';
+import { filteredData } from '../../utils/api';
+import { useFetchData } from '../../utils/hooks';
+import { DataType, ResponseType } from '../../utils/types';
 
 export const Home: FC = () => {
   const [page, setPage] = useState(1);

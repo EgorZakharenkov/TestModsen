@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode, FC } from 'react';
+import { createContext, FC, ReactNode, useContext, useState } from 'react';
 
 interface SearchContextType {
   searchTerm: string;
